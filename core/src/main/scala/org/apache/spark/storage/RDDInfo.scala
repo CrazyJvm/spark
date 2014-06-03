@@ -33,7 +33,6 @@ class RDDInfo(
   var memSize = 0L
   var diskSize = 0L
   var tachyonSize = 0L
-  var _storageLevel = storageLevel
 
   override def toString = {
     import Utils.bytesToString
