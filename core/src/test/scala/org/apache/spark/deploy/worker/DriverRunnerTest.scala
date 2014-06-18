@@ -118,8 +118,8 @@ class DriverRunnerTest extends FunSuite {
     val sleeper = mock(classOf[Sleeper])
     runner.setSleeper(sleeper)
 
-    val clock = mock(classOf[Clock])
-    runner.setClock(clock)
+    val clock = mock(classOf[Clock]) //actually we should mock SystemClock here
+    runner.setClock()
 
     val (processBuilder, process) = createProcessBuilderAndProcess()
 
