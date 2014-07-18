@@ -34,8 +34,8 @@ object PartitionStrategy {
    * Assigns edges to partitions using a 2D partitioning of the sparse edge adjacency matrix,
    * guaranteeing a `2 * sqrt(numParts)` bound on vertex replication.
    *
-   * Suppose we have a graph with 11 vertices that we want to partition
-   * over 9 machines.  We can use the following sparse matrix representation:
+   * Suppose we have a graph with 11 vertices that we want to partition over 9 machines.
+   * We can use the following sparse matrix representation:
    *
    * <pre>
    *       __________________________________
@@ -55,13 +55,12 @@ object PartitionStrategy {
    *  v11  | * <-E    |  ***     |       ** |
    *       ----------------------------------
    * </pre>
-   *
+
    * The edge denoted by `E` connects `v11` with `v1` and is assigned to processor `P6`. To get the
    * processor number we divide the matrix into `sqrt(numParts)` by `sqrt(numParts)` blocks. Notice
-   * that edges adjacent to `v11` can only be in the first column of blocks `(P0, P3,
-   * P6)` or the last
-   * row of blocks `(P6, P7, P8)`.  As a consequence we can guarantee that `v11` will need to be
-   * replicated to at most `2 * sqrt(numParts)` machines.
+   * that edges adjacent to `v11` can only be in the first column of blocks `(P0, P3, P6)` or the
+   * last row of blocks `(P6, P7, P8)`.  As a consequence we can guarantee that `v11` will need to
+   * be replicated to at most `2 * sqrt(numParts)` machines.
    *
    * Notice that `P0` has many edges and as a consequence this partitioning would lead to poor work
    * balance.  To improve balance we first multiply each vertex id by a large prime to shuffle the
@@ -69,8 +68,7 @@ object PartitionStrategy {
    *
    * One of the limitations of this approach is that the number of machines must either be a
    * perfect square. We partially address this limitation by computing the machine assignment to
-   * the next
-   * largest perfect square and then mapping back down to the actual number of machines.
+   * the next largest perfect square and then mapping back down to the actual number of machines.
    * Unfortunately, this can also lead to work imbalance and so it is suggested that a perfect
    * square is used.
    */
