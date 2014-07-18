@@ -26,12 +26,10 @@ import org.apache.spark.storage.StorageLevel
 
 
 /**
- * The Graph abstractly represents a graph with arbitrary objects
- * associated with vertices and edges.  The graph provides basic
- * operations to access and manipulate the data associated with
- * vertices and edges as well as the underlying structure.  Like Spark
- * RDDs, the graph is a functional data-structure in which mutating
- * operations return new graphs.
+ * The Graph abstractly represents a graph with arbitrary objects associated with vertices and
+ * edges.  The graph provides basic operations to access and manipulate the data associated with
+ * vertices and edges as well as the underlying structure.  Like Spark RDDs, the graph is a
+ * functional data-structure in which mutating operations return new graphs.
  *
  * @note [[GraphOps]] contains additional convenience operations and graph algorithms.
  *
@@ -148,9 +146,8 @@ abstract class Graph[VD: ClassTag, ED: ClassTag] protected () extends Serializab
    * passed the vertex value for the vertices adjacent to the edge.  If vertex values are desired,
    * use `mapTriplets`.
    *
-   * @note This graph is not changed and that the new graph has the
-   * same structure.  As a consequence the underlying index structures
-   * can be reused.
+   * @note This graph is not changed and that the new graph has the same structure.
+   * As a consequence, the underlying index structures can be reused.
    *
    * @param map the function from an edge object to a new edge value.
    *
@@ -165,19 +162,18 @@ abstract class Graph[VD: ClassTag, ED: ClassTag] protected () extends Serializab
   }
 
   /**
-   * Transforms each edge attribute using the map function, passing it a whole partition at a
-   * time. The map function is given an iterator over edges within a logical partition as well as
-   * the partition's ID, and it should return a new iterator over the new values of each edge. The
-   * new iterator's elements must correspond one-to-one with the old iterator's elements. If
-   * adjacent vertex values are desired, use `mapTriplets`.
+   * Transforms each edge attribute using the map function, passing it a whole partition at a time.
+   * The map function is given an iterator over edges within a logical partition as well as
+   * the partition's ID, and it should return a new iterator over the new values of each edge.
+   * The new iterator's elements must correspond one-to-one with the old iterator's elements.
+   * If adjacent vertex values are desired, use `mapTriplets`.
    *
-   * @note This does not change the structure of the
-   * graph or modify the values of this graph.  As a consequence
-   * the underlying index structures can be reused.
+   * @note This does not change the structure of the graph or modify the values of this graph.
+   * As a consequence, the underlying index structures can be reused.
    *
-   * @param map a function that takes a partition id and an iterator
-   * over all the edges in the partition, and must return an iterator over
-   * the new values for each edge in the order of the input iterator
+   * @param map a function that takes a partition id and an iterator over all the edges in the
+   * partition, and must return an iterator over the new values for each edge in the order of
+   * the input iterator
    *
    * @tparam ED2 the new edge data type
    *
@@ -218,9 +214,8 @@ abstract class Graph[VD: ClassTag, ED: ClassTag] protected () extends Serializab
    * the order in which they are provided.  If adjacent vertex values are not required, consider
    * using `mapEdges` instead.
    *
-   * @note This does not change the structure of the
-   * graph or modify the values of this graph.  As a consequence
-   * the underlying index structures can be reused.
+   * @note This does not change the structure of the graph or modify the values of this graph.
+   * As a consequence, the underlying index structures can be reused.
    *
    * @param map the iterator transform
    *
