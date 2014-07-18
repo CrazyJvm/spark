@@ -93,7 +93,6 @@ object PartitionStrategy {
     }
   }
 
-
   /**
    * Assigns edges to partitions by hashing the source and destination vertex IDs, resulting in a
    * random vertex cut that colocates all same-direction edges between two vertices.
@@ -103,7 +102,6 @@ object PartitionStrategy {
       math.abs((src, dst).hashCode()) % numParts
     }
   }
-
 
   /**
    * Assigns edges to partitions by hashing the source and destination vertex IDs in a canonical
