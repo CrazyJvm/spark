@@ -72,8 +72,8 @@ abstract class LogicalPlan extends QueryPlan[LogicalPlan] {
   def childrenResolved: Boolean = !children.exists(!_.resolved)
 
   /**
-   * Optionally resolves the given string to a [[NamedExpression]]. The attribute is expressed as
-   * as string in the following form: `[scope].AttributeName.[nested].[fields]...`.
+   * Optionally resolves the given string to a [[NamedExpression]]. The attribute is expressed
+   * as a string in the following form: `[scope].AttributeName.[nested].[fields]...`.
    */
   def resolve(name: String): Option[NamedExpression] = {
     val parts = name.split("\\.")
